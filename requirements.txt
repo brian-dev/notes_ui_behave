@@ -1,0 +1,5 @@
+behave~=1.2.6
+selenium
+webdriver-manager
+pyyaml
+PyHamcrest
