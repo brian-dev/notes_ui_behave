@@ -3,3 +3,4 @@ selenium
 webdriver-manager
 pyyaml
 PyHamcrest
+selenium-page-factory
