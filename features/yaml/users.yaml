@@ -13,3 +13,23 @@ problem_user:
 perf_user:
   username: 'performance_glitch_user'
   password: 'secret_sauce'
+
+empty_user:
+  username: ''
+  password: ''
+
+password_only:
+  username: ''
+  password: 'secret_sauce'
+
+username_only:
+  username: 'standard_user'
+  password: ''
+
+invalid_user:
+  username: 'standard_users'
+  password: 'secret_sauce'
+
+invalid_password:
+  username: 'standard_user'
+  password: 'secret_sauces'

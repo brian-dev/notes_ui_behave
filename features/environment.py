@@ -26,8 +26,8 @@ def config_test_browser(context):
             context.browser = Browser(headless).firefox_browser()
         case 'brave':
             context.browser = Browser(headless).brave_browser()
-    yield context.browser
     context.browser.maximize_window()
+    yield context.browser
     context.browser.quit()
 
 
@@ -41,3 +41,8 @@ def before_all(context):
     use_fixture(config_test_browser, context)
     use_fixture(load_helper_classes, context)
     use_fixture(load_page_classes, context)
+
+
+def after_scenario(context, scenario):
+    if 'logout' in scenario.tags:
+        context.login_page.logout()

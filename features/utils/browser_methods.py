@@ -11,13 +11,15 @@ class BrowserMethods:
         time.sleep(num_secs)
 
     def goto(self, url):
+        if url == self.get_current_url():
+            print("URL matches not doing anything")
         self.context.browser.get(url)
 
     def click(self, element):
         element.click()
 
     def get_element_by_id(self, value):
-        return self.browser.find_element(By.ID)
+        return self.context.browser.find_element(By.ID)
 
     def get_current_url(self):
         return self.context.browser.current_url
