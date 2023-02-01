@@ -1,0 +1,41 @@
+backpack:
+  title: 'Sauce Labs Backpack'
+  description: 'carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.'
+  price: '$29.99'
+  add_to_cart_btn_id: 'add-to-cart-sauce-labs-backpack'
+  img_alt_txt: 'Sauce Labs Backpack'
+
+bike_light:
+  title: 'Sauce Labs Bike Light'
+  description: "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included."
+  price: '$9.99'
+  add_to_cart_btn_id: 'add-to-cart-sauce-labs-bike-light'
+  img_alt_txt: 'Sauce Labs Bike Light'
+
+bolt_shirt:
+  title: 'Sauce Labs Bolt T-Shirt'
+  description: "Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt."
+  price: '$15.99'
+  add_to_cart_btn_id: 'add-to-cart-sauce-labs-bolt-t-shirt'
+  img_alt_txt: 'Sauce Labs Bolt T-Shirt'
+
+fleece_jacket:
+  title: 'Sauce Labs Fleece Jacket'
+  description: "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office."
+  price: '$49.99'
+  add_to_cart_btn_id: 'add-to-cart-sauce-labs-fleece-jacket'
+  img_alt_txt: 'Sauce Labs Fleece Jacket'
+
+onesie:
+  title: 'Sauce Labs Onesie'
+  description: "Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel."
+  price: '$7.99'
+  add_to_cart_btn_id: 'add-to-cart-sauce-labs-onesie'
+  img_alt_txt: 'Sauce Labs Onesie'
+
+all_the_things_shirt:
+  title: 'Test.allTheThings() T-Shirt (Red)'
+  description: "This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton."
+  price: '$15.99'
+  add_to_cart_btn_id: 'add-to-cart-test.allthethings()-t-shirt-(red)'
+  img_alt_txt: 'Test.allTheThings() T-Shirt (Red)'
