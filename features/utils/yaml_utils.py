@@ -15,3 +15,8 @@ class YamlUtils:
         with open(f'./features/yaml/users.yaml') as file_read:
             file = yaml.load(file_read, Loader=yaml.FullLoader)
         return file[user]
+
+    def get_product_info(self, product_name):
+        with open(f'./features/yaml/all_products.yaml') as file_read:
+            file = yaml.load(file_read, Loader=yaml.FullLoader)
+        return file[product_name]
