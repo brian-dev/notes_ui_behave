@@ -1,3 +1,4 @@
+@test
 Feature: All Products Scenarios
 
   Background: Navigate to login URL
@@ -52,4 +53,3 @@ Feature: All Products Scenarios
     |fleece_jacket        |
     |onesie               |
     |all_the_things_shirt |
-    
