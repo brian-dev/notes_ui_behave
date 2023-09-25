@@ -1,5 +1,5 @@
 behave~=1.2.6
-selenium
+selenium >=4.0.0
 webdriver-manager
 pyyaml
 PyHamcrest
