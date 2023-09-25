@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
+print(current)
+print(parent)
 sys.path.append(parent)
 
 import pages.login_page.login_page as lp
