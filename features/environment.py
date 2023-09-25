@@ -26,7 +26,7 @@ def config_test_browser(context):
     load_dotenv()
     browser_name = os.getenv('BROWSER')
     headless = os.getenv('HEADLESS')
-    context.browser = Core.initialize_core(Core(), browser_name=browser_name)
+    context.browser = Core().initialize_core(browser_name=browser_name)
     context.browser.maximize_window()
     yield context.browser
     context.browser.quit()
