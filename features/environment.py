@@ -1,17 +1,20 @@
+import sys
+
 from behave import fixture, use_fixture
 import os
 from dotenv import load_dotenv
-from features.pages.login_page.login_page import LoginPage
-from features.pages.products_page.products_page import ProductsPage
-from features.utils.browser import Browser
-from features.utils.browser_methods import BrowserMethods
-from features.utils.yaml_utils import YamlUtils
+sys.path.insert(1, os.path.join(sys.path[0], '..'))
+import pages.login_page.login_page as lp
+import pages.products_page.products_page as prod_page
+from core_framework.driver.browser import Browser
+import core_framework.driver.browser_methods as browser_methods
+import utils.yaml_utils as yaml_utils
 
 
 @fixture
 def load_helper_classes(context):
-    context.browser_methods = BrowserMethods(context)
-    context.yaml_utils = YamlUtils()
+    context.browser_methods = browser_methods.BrowserMethods(context)
+    context.yaml_utils = yaml_utils.YamlUtils()
 
 
 @fixture
@@ -33,8 +36,8 @@ def config_test_browser(context):
 
 @fixture
 def load_page_classes(context):
-    context.login_page = LoginPage(context)
-    context.products_page = ProductsPage(context)
+    context.login_page = lp.LoginPage(context)
+    context.products_page = prod_page.ProductsPage(context)
 
 
 def before_all(context):
