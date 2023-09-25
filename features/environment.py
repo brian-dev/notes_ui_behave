@@ -6,8 +6,6 @@ from dotenv import load_dotenv
 
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.abspath(os.path.join(current, '../..'))
-print(f"************{current}")
-print(f"*************{parent}")
 sys.path.append(parent)
 
 import pages.login_page.login_page as lp
@@ -29,10 +27,10 @@ def config_test_browser(context):
     browser_name = os.getenv('BROWSER')
     headless = os.getenv('HEADLESS')
     driver = Core().initialize_core(browser_name=browser_name, headless=headless)
-    context.browser = driver
-    context.browser.maximize_window()
-    yield context.browser
-    context.browser.quit()
+    context.driver = driver
+    context.driver.maximize_window()
+    yield context.driver
+    context.driver.quit()
 
 
 @fixture
