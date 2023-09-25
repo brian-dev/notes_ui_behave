@@ -72,10 +72,7 @@ jobs:
 
     - name: Test with behave
       run: |
-        cd core-python
-        ls
-        cd ${{ github.event.repository.name }}
-        ls
+        cd core-python/${{ github.event.repository.name }}
         behave
 
     - name: Get Allure history
