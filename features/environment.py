@@ -13,13 +13,13 @@ sys.path.append(parent)
 import pages.login_page.login_page as lp
 import pages.products_page.products_page as prod_page
 from core_framework.core import Core
-# import core_framework.driver.browser_methods as bm
+import core_framework.driver.browser_methods as bm
 import utils.yaml_utils as yaml_utils
 
 
 @fixture
 def load_helper_classes(context):
-    # context.browser_methods = bm.BrowserMethods(context)
+    context.browser_methods = bm.BrowserMethods(context)
     context.yaml_utils = yaml_utils.YamlUtils()
 
 
