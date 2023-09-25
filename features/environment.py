@@ -13,13 +13,13 @@ sys.path.append(parent)
 import pages.login_page.login_page as lp
 import pages.products_page.products_page as prod_page
 from core_framework.core import Core
-from core_framework.driver.browser_methods import BrowserMethods
+import core_framework.driver.browser_methods as bm
 import utils.yaml_utils as yaml_utils
 
 
 @fixture
 def load_helper_classes(context):
-    context.browser_methods = BrowserMethods(context)
+    context.browser_methods = bm.BrowserMethods(context)
     context.yaml_utils = yaml_utils.YamlUtils()
 
 
@@ -28,7 +28,7 @@ def config_test_browser(context):
     load_dotenv()
     browser_name = os.getenv('BROWSER')
     headless = os.getenv('HEADLESS')
-    context.browser = Core().initialize_core(browser_name=browser_name)
+    context.browser = Core().initialize_core(browser_name=browser_name, headless=headless)
     context.browser.maximize_window()
     yield context.browser
     context.browser.quit()
