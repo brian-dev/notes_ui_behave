@@ -10,7 +10,7 @@ sys.path.append(parent)
 
 import pages.login_page.login_page as lp
 import pages.products_page.products_page as prod_page
-from core_framework.driver.browser import Browser
+from core_framework.core import Core
 import core_framework.driver.browser_methods as browser_methods
 import utils.yaml_utils as yaml_utils
 
@@ -26,13 +26,7 @@ def config_test_browser(context):
     load_dotenv()
     browser_name = os.getenv('BROWSER')
     headless = os.getenv('HEADLESS')
-    match browser_name:
-        case 'chrome':
-            context.browser = Browser(headless).chrome_browser()
-        case 'firefox':
-            context.browser = Browser(headless).firefox_browser()
-        case 'brave':
-            context.browser = Browser(headless).brave_browser()
+    context.browser = Core.initialize_core(Core(), browser_name=browser_name)
     context.browser.maximize_window()
     yield context.browser
     context.browser.quit()
