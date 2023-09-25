@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 
 current = os.path.dirname(os.path.realpath(__file__))
-parent = os.path.dirname(current)
+parent = os.path.abspath(os.path.join(current, '../'))
 print(f"************{current}")
 print(f"*************{parent}")
 sys.path.append(parent)
