@@ -3,10 +3,14 @@ import sys
 from behave import fixture, use_fixture
 import os
 from dotenv import load_dotenv
-sys.path.insert(1, os.path.join(sys.path[0], '..'))
+
+current = os.path.dirname(os.path.realpath(__file__))
+parent = os.path.dirname(current)
+sys.path.append(parent)
+
 import pages.login_page.login_page as lp
 import pages.products_page.products_page as prod_page
-import core_framework.driver.browser as browser
+from core_framework.driver.browser import Browser
 import core_framework.driver.browser_methods as browser_methods
 import utils.yaml_utils as yaml_utils
 
@@ -24,11 +28,11 @@ def config_test_browser(context):
     headless = os.getenv('HEADLESS')
     match browser_name:
         case 'chrome':
-            context.browser = browser.Browser(headless).chrome_browser()
+            context.browser = Browser(headless).chrome_browser()
         case 'firefox':
-            context.browser = browser.Browser(headless).firefox_browser()
+            context.browser = Browser(headless).firefox_browser()
         case 'brave':
-            context.browser = browser.Browser(headless).brave_browser()
+            context.browser = Browser(headless).brave_browser()
     context.browser.maximize_window()
     yield context.browser
     context.browser.quit()
