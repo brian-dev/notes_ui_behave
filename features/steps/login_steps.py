@@ -1,9 +1,13 @@
+import time
+
 from behave import *
 from hamcrest import assert_that, is_
 
 
-@step('the user logs in as the "{user_type}"')
+@step('the user logs in as the "{user_type}" user')
 def step_impl(context, user_type):
+    # Set hard wait of 0.5 sec due to variable load times
+    time.sleep(0.5)
     context.login_page.set_login_vals(user_type)
     context.login_page.submit_login()
 

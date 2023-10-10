@@ -1,17 +1,31 @@
+import sys
+
 from behave import fixture, use_fixture
 import os
 from dotenv import load_dotenv
-from features.pages.login_page.login_page import LoginPage
-from features.pages.products_page.products_page import ProductsPage
-from features.utils.browser import Browser
-from features.utils.browser_methods import BrowserMethods
-from features.utils.yaml_utils import YamlUtils
+
+current = os.path.dirname(os.path.realpath(__file__))
+parent = os.path.abspath(os.path.join(current, '../..'))
+sys.path.append(parent)
+
+import pages.home_page.home_page as hp
+import pages.login_page.login_page as lp
+import pages.notes_page.notes_page as np
+from core_framework.core import Core
+from core_framework.api.api import Api
+import core_framework.driver.browser_methods as bm
+import utils.yaml_utils as yaml_utils
+import notes_api.utils.user_api as user_api
+import notes_api.utils.data_utils as api_utils
 
 
 @fixture
 def load_helper_classes(context):
-    context.browser_methods = BrowserMethods(context)
-    context.yaml_utils = YamlUtils()
+    context.base_api = Api()
+    context.user_api = user_api.UserApi()
+    context.browser_methods = bm.BrowserMethods(context)
+    context.yaml_utils = yaml_utils.YamlUtils()
+    context.api_utils = api_utils
 
 
 @fixture
@@ -19,13 +33,7 @@ def config_test_browser(context):
     load_dotenv()
     browser_name = os.getenv('BROWSER')
     headless = os.getenv('HEADLESS')
-    match browser_name:
-        case 'chrome':
-            context.browser = Browser(headless).chrome_browser()
-        case 'firefox':
-            context.browser = Browser(headless).firefox_browser()
-        case 'brave':
-            context.browser = Browser(headless).brave_browser()
+    context.browser = Core().initialize_core(browser_name=browser_name, headless=headless)
     context.browser.maximize_window()
     yield context.browser
     context.browser.quit()
@@ -33,8 +41,9 @@ def config_test_browser(context):
 
 @fixture
 def load_page_classes(context):
-    context.login_page = LoginPage(context)
-    context.products_page = ProductsPage(context)
+    context.home_page = hp.HomePage(context)
+    context.login_page = lp.LoginPage(context)
+    context.notes_page = np.NotesPage(context)
 
 
 def before_all(context):
@@ -44,5 +53,14 @@ def before_all(context):
 
 
 def after_scenario(context, scenario):
-    if 'logout' in scenario.tags:
-        context.login_page.logout()
+    # if 'ui' in scenario.tags:
+    #     token = context.yaml_utils.get_user_token('ui')
+    # else:
+    token = context.yaml_utils.get_user_token()
+    if 'delete_user' in scenario.tags:
+        context.user_api.delete_user('delete', token, context.base_api)
+    elif 'logout' in scenario.tags:
+        resp = context.user_api.logout_user('logout', token, context.base_api)
+    elif 'manual_logout' in scenario.tags:
+        context.notes_page.click_logout_btn()
+

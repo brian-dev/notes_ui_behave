@@ -1,4 +1,5 @@
-sauce_demo:
-  base_url: 'https://www.saucedemo.com'
-  login: 'https://www.saucedemo.com'
-  products: '/inventory.html'
+notes:
+  base_url: 'https://practice.expandtesting.com/notes/app'
+  home: 'https://practice.expandtesting.com/notes/app'
+  login: '/login'
+  register: '/register'
