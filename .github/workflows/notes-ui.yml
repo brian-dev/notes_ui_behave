@@ -29,6 +29,7 @@ jobs:
       run: |
         mkdir core-python
         cd core-python/
+        pwd
 
     - name: Clone core framework repository
       uses: actions/checkout@v3
