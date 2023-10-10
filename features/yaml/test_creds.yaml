@@ -1,0 +1,7 @@
+empty_email:
+  email: ''
+  pass: 'password'
+
+incomplete_email:
+  email: 'abcd'
+  pass: 'password'
