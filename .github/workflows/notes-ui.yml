@@ -48,7 +48,9 @@ jobs:
 
     - name: Navigate to project repo
       run: |
+        pwd
         cd core-python/${{ github.event.repository.name }}
+        pwd
 
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
@@ -79,6 +81,7 @@ jobs:
 
     - name: Test with behave
       run: |
+        pwd
         behave
 
     - name: Get Allure history
