@@ -29,7 +29,6 @@ jobs:
       run: |
         mkdir core-python
         cd core-python/
-        pwd
 
     - name: Clone core framework repository
       uses: actions/checkout@v3
@@ -45,13 +44,12 @@ jobs:
     - name: Clone project dependent repository
       uses: actions/checkout@v3
       with:
+        repository: brian-dev/notes_api
         path: core-python/notes_api
 
     - name: Navigate to project repo
       run: |
-        pwd
         cd core-python/${{ github.event.repository.name }}
-        pwd
 
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
@@ -82,7 +80,7 @@ jobs:
 
     - name: Test with behave
       run: |
-        pwd
+        cd core-python/${{ github.event.repository.name }}
         behave
 
     - name: Get Allure history
