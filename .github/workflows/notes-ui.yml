@@ -41,6 +41,11 @@ jobs:
       with:
         path: core-python/${{ github.event.repository.name }}
 
+    - name: Clone project dependent repository
+      uses: actions/checkout@v3
+      with:
+        path: core-python/notes_api
+
     - name: Navigate to project repo
       run: |
         cd core-python/${{ github.event.repository.name }}
@@ -70,7 +75,7 @@ jobs:
       if: ${{ github.event_name == 'schedule' }}
       run: |
         cd core-python/${{ github.event.repository.name }}
-        pytest --alluredir=allure-results
+        behave --alluredir=allure-results
 
     - name: Test with behave
       run: |
