@@ -74,6 +74,8 @@ jobs:
     - name: Test on schedule with pytest
       if: ${{ github.event_name == 'schedule' }}
       run: |
+        pwd
+        echo ls
         cd core-python/${{ github.event.repository.name }}
         behave --alluredir=allure-results
 
